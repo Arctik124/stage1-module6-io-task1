@@ -13,18 +13,17 @@ public class FileReader {
 
         try (FileInputStream in = new FileInputStream(file.getAbsolutePath()) ){
             int i;
-            String data = "";
+            StringBuilder stringBuilder = new StringBuilder();
             while ((i = in.read()) != -1){
-                data += (char) i;
+                stringBuilder.append((char) i);
             }
-            String[] splitted = data.split("\n");
-            name = splitted[0].split(": ")[1].replaceAll("\r", "");
-            age = Integer.parseInt(splitted[1].split(": ")[1].replaceAll("\r", ""));
-            email = splitted[2].split(": ")[1].replaceAll("\r", "");
-            phone = Long.parseLong(splitted[3].split(": ")[1].replaceAll("\r", ""));
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            String[] splitted = stringBuilder.toString().split("\n");
+            name = splitted[0].split(": ")[1].replace("\r", "");
+            age = Integer.parseInt(splitted[1].split(": ")[1].replace("\r", ""));
+            email = splitted[2].split(": ")[1].replace("\r", "");
+            phone = Long.parseLong(splitted[3].split(": ")[1].replace("\r", ""));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
