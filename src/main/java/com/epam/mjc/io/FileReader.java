@@ -4,12 +4,6 @@ import java.io.*;
 
 
 public class FileReader {
-//    public static void main(String[] args) {
-//        System.out.println(System.getProperty("user.home"));
-//        getDataFromFile(new File("src/test/resources/Profile.txt"));
-//    }
-
-
 
     public  Profile getDataFromFile(File file) {
         String name = "";
